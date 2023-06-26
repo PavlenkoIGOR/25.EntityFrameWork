@@ -31,5 +31,18 @@ namespace CodeFirst.Repositories
                 app.SaveChanges();
             }
         }
+        public void UserDataChangeById(int Id)
+        {
+            using (AppContext app = new AppContext())
+            {
+                //создается сущность (Entities)
+                Entities.User userData = app.Users.Where(i => i.Id == Id).FirstOrDefault();
+                Console.Write("Введите новое имя пользователя: ");
+                userData.Name = Console.ReadLine();
+
+                //FrameWork при вызове SaveChanges() сам определит, что изменилось и произведет нужный SQLзапрос
+                app.SaveChanges();
+            }
+        }
     }
 }

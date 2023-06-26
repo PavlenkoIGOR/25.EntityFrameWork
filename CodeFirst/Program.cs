@@ -8,6 +8,7 @@ namespace CodeFirst
     public enum Choice
     {
         show,
+        update,
         delete,
         exit
     }
@@ -46,7 +47,7 @@ namespace CodeFirst
             string choice = string.Empty;
             do
             {
-                Console.WriteLine("Чё надо?\n'show': показать все данные;\n'delete': удалить по Id;\n'exit': выход\n");
+                Console.WriteLine("Чё надо?\n'show': показать все данные;\n'update': изменить имя;\n'delete': удалить по Id;\n'exit': выход\n");
                 Console.Write("Так чё надо?\nВведите команду: ");
                 choice = Console.ReadLine();
                 switch (choice)
@@ -54,11 +55,13 @@ namespace CodeFirst
                     case nameof(Choice.show):
                         userRepository.SelectAllUsers();
                         break;
-                    case nameof(Choice.exit):
-                        break;
                     case nameof(Choice.delete):
                         Console.Write("Введите Id пользователя для удаления: ");
                         userRepository.DeleteUserById(Convert.ToInt32(Console.ReadLine()));
+                        break;
+                    case nameof(Choice.update):
+                        Console.Write("Введите Id пользователя для редактирования: ");
+                        userRepository.UserDataChangeById(Convert.ToInt32(Console.ReadLine()));
                         break;
                 }
             } while (choice != nameof(Choice.exit));
