@@ -17,7 +17,8 @@ namespace CodeFirst
         public DbSet<Book> Books { get; set; }
         public AppContext()
         {
-            Database.EnsureCreated();
+            Database.EnsureCreated(); //создает базу данных в случае ее отсутствия при запуске приложения.
+            //Database.EnsureDeleted(); //удаляет базу данных, если такавая существует
         }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder) //переопределенный метод для настройки подключения к БД.

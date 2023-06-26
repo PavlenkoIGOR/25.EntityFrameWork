@@ -8,9 +8,16 @@ namespace CodeFirst.Entities
 {
     public class Book
     {
-        public int id { get; set; }
-        public string? title { get; set; }
-        public string? author { get; set; }    
-        public DateTime? yearOfIssue { get; set; }
+        public int Id { get; set; }
+        public string? Title { get; set; }
+        public string? Genre { get; set; }
+        public string? Author { get; set; }    
+        public DateTime? YearOfIssue { get; set; }
+
+        //внешний ключ:
+        public int BookId { get; set; } //обратить внимание на синтаксис названия поля
+
+        //навигационное свойство - ссылка на пользователя
+        public User? User { get; set; }
     }
 }

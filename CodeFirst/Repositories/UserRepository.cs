@@ -7,7 +7,7 @@ using CodeFirst.Entities;
 
 namespace CodeFirst.Repositories
 {
-    internal class UserRepository<User>
+    internal class UserRepository<U> where U : class //<...> - в дальнейшем надо переделать под универсальный класс
     {
         public void SelectAllUsers()
         {
@@ -17,8 +17,28 @@ namespace CodeFirst.Repositories
                 foreach (var item in users)
                 {
                     string e = item.Email != null ? item.Email : "не задано";
-                    Console.WriteLine($"Id: {item.Id}\tName: {item.Name}\tEmail: {e}\tRole: {item.Role}");
+                    Console.WriteLine($"Id: {item.Id}\tName: {item.Name}\tEmail: {e}\tRole: {item.Address}");
                 }
+            }
+        }
+
+        public void AddUser()
+        {
+            Entities.User user = new Entities.User();
+            Console.WriteLine("Введите Имя нового пользователя: ");
+            user.Name = Console.ReadLine();
+
+            Console.WriteLine("Введите Email нового пользователя: ");
+            user.Email = Console.ReadLine();
+
+            Console.WriteLine("Введите Адрес нового пользователя: ");
+            user.Address = Console.ReadLine();
+
+            using (AppContext app = new AppContext())
+            {
+                Entities.User newUser = app.Users.FirstOrDefault();
+                app.Users.Add(user);
+                app.SaveChanges();
             }
         }
 
