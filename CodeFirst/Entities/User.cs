@@ -10,12 +10,11 @@ namespace CodeFirst.Entities
     public class User
     {
         public int Id { get; set; }
-        public string Name { get; set; }
+        public string? Name { get; set; }
         public string? Email { get; set; }
         public string? Address { get; set; }
-       
-        //навигационное свойство
-        public List<Book> books { get; set; } = new List<Book>();
 
+        //навигационное свойство
+        public List<Book>? Books { get; set; }
     }
 }

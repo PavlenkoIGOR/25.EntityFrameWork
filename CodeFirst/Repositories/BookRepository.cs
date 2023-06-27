@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -15,8 +16,8 @@ namespace CodeFirst.Repositories
                 List<Entities.Book> books = app.Books.ToList();
                 foreach (var item in books)
                 {
-                    string a = item.Author != null ? item.Author : "не задано";
-                    Console.WriteLine($"Название книги: {item.Title}\tЖанр: {item.Genre}\tАвтор: {a}\tГод издания: {item.YearOfIssue}");
+                    string a = item.AuthorSurname != null ? item.AuthorSurname : "не задано";
+                    Console.WriteLine($"Название книги: {item.Title}\tЖанр: {item.Genre}\tАвтор: {a}\tГод издания: {item.YearOfIssue}\tId читателя: {item.UserId}");
                 }
             }
         }
@@ -30,11 +31,11 @@ namespace CodeFirst.Repositories
             Console.WriteLine("Введите Жанр новой книги: ");
             book.Genre = Console.ReadLine();
 
-            Console.WriteLine("Введите Автора новой книги: ");
-            book.Author = Console.ReadLine();
+            Console.WriteLine("Введите Фамилию автора новой книги: ");
+            book.AuthorSurname = Console.ReadLine();
 
-            Console.WriteLine("Введите Дату издания книги (День.Месяц.Год): ");
-            book.YearOfIssue = Convert.ToDateTime(Console.ReadLine());
+            Console.WriteLine("Введите Год издания книги: ");
+            book.YearOfIssue = Convert.ToInt32(Console.ReadLine());
             
             using (AppContext app = new AppContext())
             {
@@ -59,9 +60,9 @@ namespace CodeFirst.Repositories
             {
                 //создается сущность (Entities)
                 Entities.Book bookData = app.Books.Where(i => i.Id == Id).FirstOrDefault();
-                Console.Write("Введите отредактированную Жанр издания (День.Месяц.Год): ");
-                bookData.Genre = Console.ReadLine();//Convert.ToDateTime(Console.ReadLine());
-
+                Console.Write("Введите отредактированную Год издания: ");
+                bookData.YearOfIssue = Convert.ToInt32(Console.ReadLine());
+                app.Books.Update(bookData);
                 //FrameWork при вызове SaveChanges() сам определит, что изменилось и произведет нужный SQLзапрос
                 app.SaveChanges();
             }

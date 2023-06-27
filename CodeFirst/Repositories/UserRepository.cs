@@ -17,7 +17,7 @@ namespace CodeFirst.Repositories
                 foreach (var item in users)
                 {
                     string e = item.Email != null ? item.Email : "не задано";
-                    Console.WriteLine($"Id: {item.Id}\tName: {item.Name}\tEmail: {e}\tRole: {item.Address}");
+                    Console.WriteLine($"Id: {item.Id}\tИмя: {item.Name}\tEmail: {e}\tАдрес: {item.Address}\tКниги на руках: ???");
                 }
             }
         }
