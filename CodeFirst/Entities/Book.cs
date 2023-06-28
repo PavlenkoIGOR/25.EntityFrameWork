@@ -11,10 +11,10 @@ namespace CodeFirst.Entities
     {
         //первичный ключ
         public int? Id { get; set; }
-        public string? Title { get; set; }
-        public string? Genre { get; set; }
-        public string? AuthorSurname { get; set; }    
-        public int? YearOfIssue { get; set; }
+        public string Title { get; set; }
+        public string Genre { get; set; }
+        public string AuthorSurname { get; set; }    
+        public int YearOfIssue { get; set; }
         
         //внешний ключ
         public int? UserId { get; set; } //обратить внимание на синтаксис названия поля

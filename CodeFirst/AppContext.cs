@@ -23,7 +23,7 @@ namespace CodeFirst
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder) //переопределенный метод для настройки подключения к БД.
         {
-            optionsBuilder.UseSqlServer("Data Source = DESKTOP-G5TER77\\SQLEXPRESS; Database = ForEntityFW;TrustServerCertificate=True; Trusted_Connection=True; Encrypt=false");
+            optionsBuilder.UseSqlServer("Data Source = localhost; Database = ForEntityFW;TrustServerCertificate=True; Trusted_Connection=True; Encrypt=false");
         }
     }
 }

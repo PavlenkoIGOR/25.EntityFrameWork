@@ -7,10 +7,10 @@ using System.Threading.Tasks;
 
 namespace CodeFirst.Views
 {
-    internal class UserView<User> where User : class
+    internal class UserView
     {
-        private UserRepository<User> _UserRepository;
-        public UserView(UserRepository<User> userRepository) 
+        private UserRepository _UserRepository;
+        public UserView(UserRepository userRepository) 
         {
             _UserRepository = userRepository;
         }

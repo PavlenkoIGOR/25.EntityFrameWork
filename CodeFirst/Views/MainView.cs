@@ -15,14 +15,16 @@ namespace CodeFirst.Views
         add,
         update,
         delete,
+        sba,
+        sort,
         exit
     }
     internal class MainView
     {
 
         private BookView _bookView;
-        private UserView<User> _userView;
-        public MainView(BookView bookView, UserView<User> userView) 
+        private UserView _userView;
+        public MainView(BookView bookView, UserView userView) 
         {
             _bookView = bookView;
             _userView = userView;

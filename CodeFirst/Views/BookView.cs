@@ -19,7 +19,14 @@ namespace CodeFirst.Views
             string choice = string.Empty;
             do
             {
-                Console.WriteLine("Чё надо?\n'show': показать все данные;\n'add': добавить книгу;\n'update': изменить название;\n'delete': удалить по Id;\n'exit': выход\n");
+                Console.WriteLine("Чё надо?" +
+                    "\n'show': показать все данные;" +
+                    "\n'add': добавить книгу;" +
+                    "\n'update': изменить название;" +
+                    "\n'sba': показать книги по автору;" +
+                    "\n'sort': вывести отсортированные по названию книги;" +
+                    "\n'delete': удалить по Id;" +
+                    "\n'exit': выход\n");
                 Console.Write("Так, чё надо?\nВведите команду: ");
                 choice = Console.ReadLine();
                 switch (choice)
@@ -37,6 +44,12 @@ namespace CodeFirst.Views
                         break;
                     case nameof(Choice.add):
                         _BookRepository.AddBook();
+                        break;
+                    case nameof(Choice.sort):
+                        _BookRepository.SortBooksByTitile8();
+                        break;
+                    case nameof(Choice.sba):
+                        _BookRepository.ShowBooksFromAuthor();
                         break;
                 }
             } while (choice != nameof(Choice.exit));

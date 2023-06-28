@@ -7,7 +7,7 @@ using CodeFirst.Entities;
 
 namespace CodeFirst.Repositories
 {
-    internal class UserRepository<U> where U : class //<...> - в дальнейшем надо переделать под универсальный класс
+    internal class UserRepository //<...> - в дальнейшем надо переделать под универсальный класс
     {
         public void SelectAllUsers()
         {
@@ -16,8 +16,9 @@ namespace CodeFirst.Repositories
                 List <Entities.User> users = app.Users.ToList();
                 foreach (var item in users)
                 {
+                    
                     string e = item.Email != null ? item.Email : "не задано";
-                    Console.WriteLine($"Id: {item.Id}\tИмя: {item.Name}\tEmail: {e}\tАдрес: {item.Address}\tКниги на руках: ???");
+                    Console.WriteLine($"Id: {item.Id}\tИмя: {item.Name}\tEmail: {e}\tАдрес: {item.Address}\tКниги на руках: ");
                 }
             }
         }
@@ -64,5 +65,17 @@ namespace CodeFirst.Repositories
                 app.SaveChanges();
             }
         }
+        /*
+        public bool HaveABook()
+        {
+            Console.Write("введите название книги для проверки наличия у читателя: ");
+            string name = Console.ReadLine();
+            using (AppContext app = new AppContext())
+            {
+                List<User> users = app.Users.Where(u => u.Books != null).Select(u => u).ToList();
+            }
+            return 
+        }
+        */
     }
 }
