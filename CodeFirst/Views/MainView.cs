@@ -16,6 +16,10 @@ namespace CodeFirst.Views
         update,
         delete,
         sba,
+        gbg,
+        cbg,
+        fyi,
+        ioh,
         sort,
         exit
     }
